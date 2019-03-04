@@ -1,7 +1,7 @@
-# project-job-hunter
+# iamjordan
 An application that uses docker containers to run nginx for a webserver and and ELK stack for data mining.
 #
-# Project job hunter
+# Iamjordan
 #
 # Created By Jordan Robison
 # Email @ jordan.robison@gmail.com
@@ -9,8 +9,8 @@ An application that uses docker containers to run nginx for a webserver and and 
 #
 #
 # The goal to this application is watch new job leads.
-# By doing this Job hunter collects data from your resume and from the website  # it creates. The data is then sent to a KANA board where I will have a
-# Dashboard tagging that data. This will display Companies that have spent any
+# By doing this Job hunter collects data from your resume and from the website  
+# The data is then sent to a Dashboard tagging that data. This will display Companies that have spent any
 # interest in reviewing my Resume or website. 
 #
 # #
@@ -19,7 +19,7 @@ An application that uses docker containers to run nginx for a webserver and and 
 # 1. IP address
 # 2. A record of the whois on the IP
 # 3. Date the data was received to track multiple reviews
-#
+# 4. Other metadata that can be used
 #
 #
 # Tools needed
@@ -48,8 +48,4 @@ An application that uses docker containers to run nginx for a webserver and and 
 # 8. Run packer to build the AMI
 
 
-
-http://player.vimeo.com/video/118119037
-
-ttiot2002
 # iamjordanrobison
