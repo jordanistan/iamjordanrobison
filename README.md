@@ -1,7 +1,6 @@
 # iamjordanrobison
-An application that uses docker containers to run nginx for a webserver and and ELK stack for data mining.
+# An application that uses docker containers to run nginx for a webserver and and ELK stack for data mining.
 #
-# Iamjordan
 #
 # Created By Jordan Robison
 # Email @ jordan.robison@gmail.com
