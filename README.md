@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Iamjordanrobison" />
+  <img src="https://media.tenor.com/images/af715c0a6016e077e27d332bb9858966/tenor.gif" alt="Iamjordanrobison" />
 
   &#xa0;
 
