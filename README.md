@@ -100,7 +100,9 @@ $ Service start toaster
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
-Made with :heart: by <a href="https://github.com/{{jordanistan}}" target="_blank">{{Jordan Robison}}</a>
+Made with :heart: by <a href="https://github.com/jordanistan" target="_blank">{{Jordan Robison}}</a>
+
+:computer: <a href="https://iamjordanrobison.com" target="_blank">{{Visit my Website}}
 
 &#xa0;
 
