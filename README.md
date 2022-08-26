@@ -107,5 +107,3 @@ Made with :heart: by <a href="https://github.com/jordanistan" target="_blank">Jo
 &#xa0;
 
 <a href="#top">Back to top</a>
-
-Hello!!!
