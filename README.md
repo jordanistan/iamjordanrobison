@@ -94,7 +94,9 @@ $ Service start toaster
 
 # The server will initialize in the <http://localhost:3000>
 ```
+## Support me with Coffee ## 
 
+<a href="https://www.buymeacoffee.com/jordanistan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 ## :memo: License ##
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
