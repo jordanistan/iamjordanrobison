@@ -4,9 +4,11 @@
   <title>Download File</title>
 </head>
 <body>
-  <img src="download-resume.png" alt="Image">
-  <h1>Download File</h1>
-  <p>Please Enter your work email and company to download the my resume:</p>
+  <a href="https://github.com/jordanistan/iamjordanrobison/blob/master/resume/dl/jordan_robison_Cloud_enginer_Resume.pdf" download>
+    <img src="download-resume.png" alt="Image">
+  </a>
+  <h1>To Download my Resume File</h1>
+  <p>Please Enter your email and company to download the file:</p>
   <form id="download-form">
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="email"><br>
@@ -49,7 +51,7 @@
           if (response.ok) {
             // If the request was successful, create a link to the file and click it to start the download
             var link = document.createElement('a');
-            link.href = 'https://github.com/jordanistan/iamjordanrobison/resume/dl/jordan_robison_Cloud_enginer_Resume.pdf';
+            link.href = 'https://github.com/jordanistan/iamjordanrobison/blob/master/resume/dl/jordan_robison_Cloud_enginer_Resume.pdf';
             link.download = 'jordan_robison_Cloud_enginer_Resume.pdf';
             link.click();
           } else {
