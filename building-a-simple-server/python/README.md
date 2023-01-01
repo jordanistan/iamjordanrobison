@@ -84,7 +84,7 @@ Note: The script assumes that the repository contains a file named requirements.
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
-Made with :heart: by <a href="https://github.com/jordanistan" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/jordanistan" target="_blank">Jordan Robison</a>
 
 &#xa0;
 
