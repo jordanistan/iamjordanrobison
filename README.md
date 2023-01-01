@@ -46,13 +46,23 @@
 
 ## :dart: About ##
 
-This is iamjordanrobison. This site was created to allow opportunities come to me. From the website you will see a variety of skills I have obtained over the years.
-You will also be able to download my resume from the website. In fact, maybe the reason you are reading this is cause you were sent to the website. 
+Welcome to  iamjordanrobison.com
 
-The other great part about the website is this allows people to schedule the time to speak with me. Without the back and forth of finding what time works best. 
-This allows YOU...YEAHH YOU!!!! To see my availability with out having to wait on a reply back. You book the day and time and it shows up on my calendar. 
-This created a Google Meeting for use to chat.
+This site was created to allow opportunities to come to me. 
 
+* To make it easy for potential employers to access your resume and learn more about your work experience and qualifications.
+
+* To stand out from other job candidates by showcasing your personal brand and unique qualifications.
+
+* To showcase your portfolio of work and highlight your achievements and skills.
+
+* To make it easy for potential clients or partners to learn more about you and your business.
+
+Overall, a resume website is a great way to promote yourself and your career online and can be an effective tool for job search and career advancement.
+
+From the website you will see a variety of skills I have obtained over the years. You will also be able to download my resume from the website. In fact, maybe the reason you are reading this is because you were sent to the website.
+
+The other great part about the website is this allows people to schedule the time to speak with me. Without the back and forth of finding what time works best. This allows YOU...YEAHH YOU!!!! To see my availability without having to wait for a reply back. You book the day and time and it shows up on yours and my calendar. Be sure to accept the invite in your email. On the day of the interview you will be notification about the meeting. Join the Zoom Meeting. 
 
 
 ## :sparkles: Features ##
@@ -60,22 +70,9 @@ This created a Google Meeting for use to chat.
 :heavy_check_mark: Feature 1; You are able to get my resume \
 :heavy_check_mark: Feature 2; Able to schedule a Video chat without ever speaking \
 :heavy_check_mark: Feature 3; It's all about working Smarter and not Harder!
-
-## :rocket: Technologies ##
-
-The following tools were used in this project:
-
-- [GoLang](https://golang.org/doc/)
-- [Terraform](https://www.terraform.io/docs/index.html)
-- [Ansible](https://docs.ansible.com/ansible_community.html)
-- [Docker](https:docker.io)
-- [Github](https://github.com/jordanistan)
-- [More Coming Soon.....](https://iamjordanrobison.com/)
-
-
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Docker](https:docker.io) installed.
 
 ## :checkered_flag: Starting ##
 
