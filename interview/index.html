@@ -1,61 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Questionnaire</title>
-    <script type="text/javascript">
-      function submitForm() {
-        // get the form data
-        var email = document.getElementById("email").value;
-        var q1 = document.getElementById("q1").value;
-        var q2 = document.getElementById("q2").value;
-        var q3 = document.getElementById("q3").value;
-        var q4 = document.getElementById("q4").value;
-        var q5 = document.getElementById("q5").value;
-
-        // create a form data
-        var formData = new FormData();
-        formData.append("email", email);
-        formData.append("q1", q1);
-        formData.append("q2", q2);
-        formData.append("q3", q3);
-        formData.append("q4", q4);
-        formData.append("q5", q5);
-
-        // send form data to server
-        fetch("/upload", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-      }
-    </script>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdnqVZCxrtDQq9iqiQCDOmunlaFJf3Ql6f2kPsA1XGQ2eTmyg/viewform?embedded=true" width="640" height="2278" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </head>
   <body>
-    <form>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <br>
-      <label for="q1">Question 1:</label>
-      <input type="text" id="q1" name="q1" required>
-      <br>
-      <label for="q2">Question 2:</label>
-      <input type="text" id="q2" name="q2" required>
-      <br>
-      <label for="q3">Question 3:</label>
-      <input type="text" id="q3" name="q3" required>
-      <br>
-      <label for="q4">Question 4:</label>
-      <input type="text" id="q4" name="q4" required>
-      <br>
-      <label for="q5">Question 5:</label>
-      <input type="text" id="q5" name="q5" required>
-      <br>
-      <input type="button" value="Submit" onclick="submitForm()">
-    </form>
- 
+    
+  
