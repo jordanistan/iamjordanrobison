@@ -5,7 +5,40 @@
 
 version: 2
 updates:
-  - package-ecosystem: "*" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "html"
+    directory: "/"
     schedule:
-      interval: "weekly" 
+      interval: "daily"
+  - package-ecosystem: "github_actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "sbom"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+workflows:
+  version: 2
+  build-and-upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add your build steps here
+      - name: Build your project
+        run: |
+          # Add commands to build your project here
+
+      - name: Create artifact
+        run: |
+          # Create an artifact (e.g., a zip file)
+          mkdir -p artifacts
+          zip -r my_artifact.zip ./path/to/artifact
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my_artifact
+          path: ./artifacts/my_artifact.zip
