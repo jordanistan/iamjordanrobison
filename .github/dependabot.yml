@@ -5,15 +5,23 @@
 
 version: 2
 updates:
-  - package-ecosystem: "html"
-    directory: "/"
-    schedule:
-      interval: "daily"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
-  - package-ecosystem: "sbom"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "bundle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
     directory: "/"
     schedule:
       interval: "daily"
