@@ -1,0 +1,16 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "Threat Model - iamjordanrobison",
+    "owner": "Jordan",
+    "description": "Make sure there are no threats",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "Jordan",
+    "threatTop": 0
+  }
+}
