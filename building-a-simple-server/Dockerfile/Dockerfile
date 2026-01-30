@@ -6,7 +6,7 @@ COPY . .
 
 RUN go build -o main
 
-FROM alpine:3.21.0
+FROM alpine:3.23.3
 
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk*
 
