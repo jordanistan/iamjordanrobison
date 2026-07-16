@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1117">
+  <meta name="description" content="A static threat detection dashboard for Jordan Robison's portfolio, showing how he triages cloud, identity, endpoint, and CI/CD signals with evidence-first response.">
+  <meta name="author" content="Jordan Robison">
+  <meta name="robots" content="index,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <title>Jordan Robison | Threat Detection Dashboard</title>
+  <link rel="canonical" href="https://iamjordanrobison.com/threat-detection.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jordan Robison">
+  <meta property="og:title" content="Jordan Robison | Threat Detection Dashboard">
+  <meta property="og:description" content="A static threat detection dashboard showing how Jordan Robison triages cloud, identity, endpoint, and CI/CD signals with evidence-first response.">
+  <meta property="og:url" content="https://iamjordanrobison.com/threat-detection.html">
+  <meta property="og:image" content="https://iamjordanrobison.com/assets/images/home2.jpg">
+  <meta property="og:image:alt" content="Technical background image used for the Jordan Robison threat detection dashboard">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jordan Robison | Threat Detection Dashboard">
+  <meta name="twitter:description" content="A static threat detection dashboard showing how Jordan Robison triages cloud, identity, endpoint, and CI/CD signals with evidence-first response.">
+  <meta name="twitter:image" content="https://iamjordanrobison.com/assets/images/home2.jpg">
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/images/ico/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/images/ico/apple-touch-icon-57-precomposed.png">
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jordan Robison",
+    "jobTitle": "Security Engineer",
+    "description": "Hands-on security and infrastructure engineer with more than 10 years of progressive experience across cloud engineering, site reliability, application security, DevSecOps, and regulated SaaS operations.",
+    "url": "https://iamjordanrobison.com",
+    "image": "https://iamjordanrobison.com/assets/images/home2.jpg",
+    "email": "jordan.robison@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Austin",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/jordanistan/",
+      "https://github.com/jordanistan"
+    ],
+    "knowsAbout": [
+      "Security Engineering",
+      "Cloud Security",
+      "Application Security",
+      "DevSecOps",
+      "FedRAMP",
+      "Observability",
+      "AWS",
+      "GCP",
+      "Linux",
+      "Kubernetes",
+      "Terraform",
+      "CI/CD",
+      "Root Cause Analysis",
+      "Security Automation"
+    ]
+  }
+  </script>
+</head>
+
+<body class="site-page dashboard-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="/" aria-label="Return to portfolio home">
+        <span class="brand__name">Jordan Robison</span>
+        <span class="brand__role">Threat Detection Dashboard</span>
+      </a>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navigation" aria-controls="site-navigation" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <nav id="site-navigation" class="site-nav collapse navbar-collapse" aria-label="Primary">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#signals">Signals</a></li>
+          <li><a href="#response">Response</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="overview" class="hero-section">
+      <div class="container hero-shell">
+        <div>
+          <div class="hero-eyebrow">Threat Detection | Portfolio View</div>
+          <h1 class="hero-title">Threat detection signals, triage paths, and evidence-first response.</h1>
+          <div class="hero-copy">
+            <p>This is a static portfolio dashboard, not a live production feed. It shows how I think about cloud, identity, endpoint, and CI/CD telemetry when the evidence is fragmented.</p>
+            <p>I look for drift, correlate weak signals, reproduce the failure path, and document the next action clearly enough that engineers and auditors can follow the reasoning.</p>
+          </div>
+
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="site-btn site-btn--primary" href="/Jordan_Robison_2026-Resume.pdf" download="Jordan_Robison_2026-Resume.pdf">
+              <i class="fa fa-download" aria-hidden="true"></i> Download Resume
+            </a>
+            <a class="site-btn" href="/"><i class="fa fa-folder-open" aria-hidden="true"></i> View Portfolio</a>
+            <a class="site-btn site-btn--secondary" href="#contact"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact Jordan</a>
+            <a class="site-btn" href="https://www.linkedin.com/in/jordanistan/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </div>
+
+          <ul class="hero-metrics" aria-label="Dashboard highlights">
+            <li><i class="fa fa-shield" aria-hidden="true"></i> Identity and access drift</li>
+            <li><i class="fa fa-cloud" aria-hidden="true"></i> Cloud and Kubernetes telemetry</li>
+            <li><i class="fa fa-terminal" aria-hidden="true"></i> Endpoint and pipeline evidence</li>
+            <li><i class="fa fa-search" aria-hidden="true"></i> Triage and root cause analysis</li>
+          </ul>
+        </div>
+
+        <aside class="dashboard-preview" aria-label="Representative signal panel">
+          <div class="dashboard-card__header">
+            <div>
+              <span class="dashboard-card__eyebrow">Representative Surface</span>
+              <h2 class="dashboard-card__title">Current signal posture</h2>
+            </div>
+            <span class="status-pill status-pill--stable">Portfolio</span>
+          </div>
+
+          <div class="dashboard-signal-stack">
+            <div class="dashboard-signal">
+              <div class="dashboard-signal__meta">
+                <span class="dashboard-signal__name">Identity drift</span>
+                <span class="status-pill status-pill--high">High</span>
+              </div>
+              <div class="signal-bar signal-bar--high" aria-hidden="true"><span></span></div>
+              <div class="dashboard-signal__context">Policy expansion outside baseline</div>
+            </div>
+
+            <div class="dashboard-signal">
+              <div class="dashboard-signal__meta">
+                <span class="dashboard-signal__name">Cloud config mismatch</span>
+                <span class="status-pill status-pill--elevated">Elevated</span>
+              </div>
+              <div class="signal-bar signal-bar--elevated" aria-hidden="true"><span></span></div>
+              <div class="dashboard-signal__context">Audit trail and deployment window correlation</div>
+            </div>
+
+            <div class="dashboard-signal">
+              <div class="dashboard-signal__meta">
+                <span class="dashboard-signal__name">Endpoint heartbeat</span>
+                <span class="status-pill status-pill--watch">Watch</span>
+              </div>
+              <div class="signal-bar signal-bar--watch" aria-hidden="true"><span></span></div>
+              <div class="dashboard-signal__context">Collector gap under investigation</div>
+            </div>
+
+            <div class="dashboard-signal">
+              <div class="dashboard-signal__meta">
+                <span class="dashboard-signal__name">Pipeline secret scan</span>
+                <span class="status-pill status-pill--stable">Stable</span>
+              </div>
+              <div class="signal-bar signal-bar--stable" aria-hidden="true"><span></span></div>
+              <div class="dashboard-signal__context">Workflow review and validation complete</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="site-section site-section--alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Overview</span>
+          <h2>What the dashboard surfaces</h2>
+          <p>The cards below show the kinds of signals, sources, and triage habits I use when something looks off.</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="dashboard-card dashboard-card--third">
+            <div class="dashboard-card__header">
+              <div>
+                <span class="dashboard-card__eyebrow">Detection Lens</span>
+                <h3 class="dashboard-card__title">How I read the signal</h3>
+              </div>
+            </div>
+            <ul class="callout-list">
+              <li>Correlate cloud, identity, endpoint, and CI/CD activity before calling something real.</li>
+              <li>Prefer evidence and reproduction over guesswork or alarm fatigue.</li>
+              <li>Capture the next action in language that engineers and auditors can both follow.</li>
+            </ul>
+          </article>
+
+          <article class="dashboard-card dashboard-card--third">
+            <div class="dashboard-card__header">
+              <div>
+                <span class="dashboard-card__eyebrow">Telemetry Sources</span>
+                <h3 class="dashboard-card__title">What feeds the view</h3>
+              </div>
+            </div>
+            <ul class="tag-list" aria-label="Telemetry sources">
+              <li>AWS CloudTrail</li>
+              <li>GuardDuty</li>
+              <li>GitHub Actions</li>
+              <li>Kubernetes audit logs</li>
+              <li>Linux journald</li>
+              <li>Windows Event Logs</li>
+              <li>LogicMonitor</li>
+              <li>SIEM</li>
+            </ul>
+          </article>
+
+          <article class="dashboard-card dashboard-card--third">
+            <div class="dashboard-card__header">
+              <div>
+                <span class="dashboard-card__eyebrow">Triage Rules</span>
+                <h3 class="dashboard-card__title">What I do first</h3>
+              </div>
+            </div>
+            <ul class="section-list">
+              <li>Reproduce the failure path and separate symptom from cause.</li>
+              <li>Check whether the change fits the deployment window and expected baseline.</li>
+              <li>Document evidence, escalation notes, and follow-up actions in plain English.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="signals" class="site-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Signals</span>
+          <h2>Representative detections</h2>
+          <p>These are sample signals, not live incidents. They show the kinds of issues I would investigate and how I would frame the next action.</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="dashboard-card dashboard-card--half">
+            <div class="dashboard-alert">
+              <div class="dashboard-alert__head">
+                <div>
+                  <span class="dashboard-alert__source">AWS CloudTrail</span>
+                  <h3>IAM policy expanded outside baseline</h3>
+                </div>
+                <span class="status-pill status-pill--high">High</span>
+              </div>
+              <p>Identity and access drift detected during a routine change window. The first step is to compare the policy diff against the intended deployment and prior trust model.</p>
+              <ul class="tag-list">
+                <li>Identity</li>
+                <li>Cloud</li>
+                <li>Audit trail</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dashboard-card dashboard-card--half">
+            <div class="dashboard-alert">
+              <div class="dashboard-alert__head">
+                <div>
+                  <span class="dashboard-alert__source">GitHub Actions</span>
+                  <h3>Workflow secret pattern needs review</h3>
+                </div>
+                <span class="status-pill status-pill--elevated">Elevated</span>
+              </div>
+              <p>A change introduces a new secret-like value in pipeline output. I would validate the scan result, check provenance, and decide whether the finding is noise or exposure.</p>
+              <ul class="tag-list">
+                <li>CI/CD</li>
+                <li>Secrets</li>
+                <li>Supply chain</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dashboard-card dashboard-card--half">
+            <div class="dashboard-alert">
+              <div class="dashboard-alert__head">
+                <div>
+                  <span class="dashboard-alert__source">LogicMonitor</span>
+                  <h3>Collector heartbeat gap on an endpoint</h3>
+                </div>
+                <span class="status-pill status-pill--watch">Watch</span>
+              </div>
+              <p>Endpoint telemetry stopped arriving on schedule. I would verify network reachability, service health, and any recent certificate or permission changes.</p>
+              <ul class="tag-list">
+                <li>Endpoint</li>
+                <li>Telemetry</li>
+                <li>Linux</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dashboard-card dashboard-card--half">
+            <div class="dashboard-alert">
+              <div class="dashboard-alert__head">
+                <div>
+                  <span class="dashboard-alert__source">Kubernetes audit logs</span>
+                  <h3>Namespace permissions drifted</h3>
+                </div>
+                <span class="status-pill status-pill--high">High</span>
+              </div>
+              <p>RBAC behavior no longer matches the expected least-privilege model. I would compare the current role bindings to the approved configuration and escalate with evidence.</p>
+              <ul class="tag-list">
+                <li>Kubernetes</li>
+                <li>RBAC</li>
+                <li>Least privilege</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="response" class="site-section site-section--alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Response</span>
+          <h2>Triage flow</h2>
+          <p>How I move from noisy alerts to a defensible conclusion, without pretending the answer is obvious too early.</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="dashboard-card dashboard-card--third">
+            <div class="dashboard-step">
+              <div class="dashboard-step__index">01</div>
+              <div>
+                <h3 class="dashboard-step__title">Ingest and correlate</h3>
+                <p>Collect the signal, line it up against the time window, and compare it to the surrounding telemetry.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="dashboard-card dashboard-card--third">
+            <div class="dashboard-step">
+              <div class="dashboard-step__index">02</div>
+              <div>
+                <h3 class="dashboard-step__title">Test the hypothesis</h3>
+                <p>Reproduce the behavior where possible, isolate the root cause, and decide whether the event is benign, broken, or risky.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="dashboard-card dashboard-card--third">
+            <div class="dashboard-step">
+              <div class="dashboard-step__index">03</div>
+              <div>
+                <h3 class="dashboard-step__title">Escalate with evidence</h3>
+                <p>Write the conclusion, the artifact trail, and the next action so engineers, customers, and auditors can act on it.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="site-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Contact</span>
+          <h2>Reach out</h2>
+          <p>If the dashboard gives you the context you need, these are the fastest ways to get in touch.</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <div class="contact-body">
+              <h3>Quick Actions</h3>
+              <div class="button-row" style="margin-top: 1rem;">
+                <a class="site-btn site-btn--primary" href="mailto:jordan.robison@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> Email Jordan</a>
+                <a class="site-btn" href="https://calendly.com/jordan-robison/meetup" target="_blank" rel="noopener noreferrer"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule Time</a>
+                <a class="site-btn" href="/Jordan_Robison_2026-Resume.pdf" download="Jordan_Robison_2026-Resume.pdf"><i class="fa fa-download" aria-hidden="true"></i> Download Resume</a>
+              </div>
+
+              <div class="social-row" aria-label="Social profiles">
+                <a href="https://www.linkedin.com/in/jordanistan/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+                <a href="https://github.com/jordanistan" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+                <a href="/" rel="noopener noreferrer"><i class="fa fa-home" aria-hidden="true"></i> Portfolio</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-body">
+              <h3>Contact Details</h3>
+              <ul class="contact-list" style="margin-top: 1rem;">
+                <li>
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <div><strong>Name</strong><span>Jordan Robison</span></div>
+                </li>
+                <li>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <div><strong>Location</strong><span>Austin, Texas</span></div>
+                </li>
+                <li>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <div><strong>Email</strong><a href="mailto:jordan.robison@gmail.com">jordan.robison@gmail.com</a></div>
+                </li>
+                <li>
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  <div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/jordanistan/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jordanistan</a></div>
+                </li>
+                <li>
+                  <i class="fa fa-github" aria-hidden="true"></i>
+                  <div><strong>GitHub</strong><a href="https://github.com/jordanistan" target="_blank" rel="noopener noreferrer">github.com/jordanistan</a></div>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 Jordan Robison</span>
+      <span class="muted"><a href="/">Back to the portfolio</a></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
