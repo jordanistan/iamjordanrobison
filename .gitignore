@@ -10,3 +10,6 @@ assets/.DS_Store
 assets/.DS_Store
 assets/.DS_Store
 .vscode
+
+# Review output
+_review/
