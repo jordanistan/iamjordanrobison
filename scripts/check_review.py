@@ -63,6 +63,22 @@ def check(root):
                 for item in doc.iter():
                     if item.tag.endswith(('script','foreignObject')) or any(k.startswith('on') for k in item.attrib): errors.append(f'Active SVG in {p.name}')
             except ET.ParseError: errors.append(f'Malformed SVG {p.name}')
+    resume=root/'Jordan_Robison_2026-Resume.pdf'
+    if not resume.is_file():
+        errors.append('Missing allowlisted recruiter resume PDF')
+    else:
+        data=resume.read_bytes()
+        if not data.startswith(b'%PDF-') or len(data) < 10_000:
+            errors.append('Recruiter resume is not a valid non-empty PDF')
+    index=root/'index.html'
+    if index in pages and not any(
+        urlsplit(ref).path == 'Jordan_Robison_2026-Resume.pdf'
+        for tag,ref in pages[index].refs
+        if tag == 'a'
+    ):
+        errors.append('Landing page is missing the recruiter resume link')
+    if (root/'resume.html').exists():
+        errors.append('Legacy live-contact resume page entered review artifact')
     for e in errors: print(e,file=sys.stderr)
     print(f'Artifact check: {len(pages)} pages, {len(errors)} errors')
     return errors
