@@ -63,6 +63,42 @@ def check(root):
                 for item in doc.iter():
                     if item.tag.endswith(('script','foreignObject')) or any(k.startswith('on') for k in item.attrib): errors.append(f'Active SVG in {p.name}')
             except ET.ParseError: errors.append(f'Malformed SVG {p.name}')
+    resume=root/'Jordan_Robison_2026-Resume.pdf'
+    if not resume.is_file():
+        errors.append('Missing allowlisted recruiter resume PDF')
+    else:
+        data=resume.read_bytes()
+        if not data.startswith(b'%PDF-') or len(data) < 10_000:
+            errors.append('Recruiter resume is not a valid non-empty PDF')
+        unsafe_pdf_markers = {
+            b'/AA': 'additional actions',
+            b'/AcroForm': 'interactive form',
+            b'/EmbeddedFiles': 'embedded file collection',
+            b'/Filespec': 'file attachment',
+            b'/ImportData': 'data import action',
+            b'/JavaScript': 'JavaScript',
+            b'/JS': 'JavaScript action',
+            b'/Launch': 'launch action',
+            b'/OpenAction': 'automatic open action',
+            b'/RichMedia': 'rich media',
+            b'/SubmitForm': 'form submission',
+            b'/URI': 'external URI action',
+            b'/GoToR': 'remote document action',
+            b'Content Credentials': 'embedded content credential',
+            b'gpt-': 'model provenance metadata',
+        }
+        for marker, label in unsafe_pdf_markers.items():
+            if marker in data:
+                errors.append(f'Recruiter resume contains {label}')
+    index=root/'index.html'
+    if index in pages and not any(
+        urlsplit(ref).path == 'Jordan_Robison_2026-Resume.pdf'
+        for tag,ref in pages[index].refs
+        if tag == 'a'
+    ):
+        errors.append('Landing page is missing the recruiter resume link')
+    if (root/'resume.html').exists():
+        errors.append('Legacy live-contact resume page entered review artifact')
     for e in errors: print(e,file=sys.stderr)
     print(f'Artifact check: {len(pages)} pages, {len(errors)} errors')
     return errors
