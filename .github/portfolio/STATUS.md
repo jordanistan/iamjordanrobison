@@ -29,3 +29,9 @@ This change affects the native GitHub Pages design review only. The separate cen
 ## Owner-requested design restoration — October 8, 2026
 
 Restored `index.html`, robots and sitemap from `0b837e291252e666aac048ef0aa266b2a11b1286`, the state before PR #62 and PR #64 replaced the original design. The publication allowlist now includes the existing résumé and threat-detection pages, original CSS, imagery, fonts and navigation scripts. The sanitized résumé PDF and security workflows remain. Historical compatibility exceptions in the artifact checker are restricted to exact file hashes. The domain review mirror remains separate. Future work must preserve this design unless Jordan explicitly requests a redesign. Local artifact checks and deployment evidence are recorded in the restoration delivery.
+
+## P019 Alpine runtime consolidation — October 19, 2026
+
+Six open Snyk pull requests target the historical Docker example from an obsolete `alpine:3.21.0` base and cannot merge cleanly after the repository already moved to 3.23.2. The replacement branch updates only the example's runtime stage to Docker Official Image `alpine:3.23.6`, pinned to the verified multi-platform OCI index digest `sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0`, and uses `apk add --no-cache` for the CA certificate package.
+
+The official image record mapped the supported 3.23 line to 3.23.6 on October 19, 2026: <https://github.com/docker-library/official-images/blob/master/library/alpine>. The digest was independently checked against Docker Registry V2. This does not claim that the full image is reproducible or vulnerability-free: the separate `golang:alpine` build stage remains mutable, the checked-in repository has no Go source or module files for this historical example, and this runner has no container engine. A real build was therefore not represented as tested. Site source, appearance, publication, domains and deployment settings are unchanged.
