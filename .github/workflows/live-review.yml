@@ -1,0 +1,56 @@
+name: Professional site live integrity
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'scripts/live_review.py'
+      - 'scripts/test_live_review.py'
+      - '.github/workflows/live-review.yml'
+      - '.github/workflows/ethicalcheck.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'scripts/live_review.py'
+      - 'scripts/test_live_review.py'
+      - '.github/workflows/live-review.yml'
+      - '.github/workflows/ethicalcheck.yml'
+  schedule:
+    - cron: '23 13 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: professional-live-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Offline verifier tests
+        run: python3 -m unittest scripts.test_live_review -v
+      - name: Preserve the exact Pages artifact
+        run: |
+          node --check site-assets/site.js
+          python3 scripts/stage_review.py _review
+          bash scripts/stage_domain_previews.sh _review/domain-previews
+          python3 scripts/check_review.py _review
+
+  live:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Verify public root and reviewed resume
+        run: python3 scripts/live_review.py
