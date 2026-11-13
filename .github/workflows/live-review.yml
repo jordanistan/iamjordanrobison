@@ -4,6 +4,12 @@ on:
   pull_request:
     branches: [master]
     paths:
+      - 'index.html'
+      - 'Jordan_Robison_2026-Resume.pdf'
+      - 'site-assets/site.js'
+      - 'scripts/stage_review.py'
+      - 'scripts/stage_domain_previews.sh'
+      - 'scripts/check_review.py'
       - 'scripts/live_review.py'
       - 'scripts/test_live_review.py'
       - '.github/workflows/live-review.yml'
@@ -11,6 +17,12 @@ on:
   push:
     branches: [master]
     paths:
+      - 'index.html'
+      - 'Jordan_Robison_2026-Resume.pdf'
+      - 'site-assets/site.js'
+      - 'scripts/stage_review.py'
+      - 'scripts/stage_domain_previews.sh'
+      - 'scripts/check_review.py'
       - 'scripts/live_review.py'
       - 'scripts/test_live_review.py'
       - '.github/workflows/live-review.yml'
@@ -44,7 +56,7 @@ jobs:
           python3 scripts/check_review.py _review
 
   live:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master'
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -52,5 +64,6 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+          ref: ${{ github.sha }}
       - name: Verify public root and reviewed resume
         run: python3 scripts/live_review.py
