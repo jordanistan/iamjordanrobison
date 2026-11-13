@@ -219,5 +219,34 @@ class ResumeTests(unittest.TestCase):
                     verify_resume(changed, path)
 
 
+class WorkflowTests(unittest.TestCase):
+    def test_live_workflow_is_bound_to_reviewed_source_and_trusted_master(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        workflow = (root / ".github/workflows/live-review.yml").read_text()
+        for path in (
+            "index.html",
+            "Jordan_Robison_2026-Resume.pdf",
+            "site-assets/site.js",
+            "scripts/stage_review.py",
+            "scripts/stage_domain_previews.sh",
+            "scripts/check_review.py",
+            "scripts/live_review.py",
+            "scripts/test_live_review.py",
+        ):
+            with self.subTest(path=path):
+                self.assertEqual(workflow.count(f"- '{path}'"), 2)
+        self.assertIn("permissions:\n  contents: read", workflow)
+        self.assertEqual(workflow.count("persist-credentials: false"), 2)
+        live = workflow.split("\n  live:\n", 1)[1]
+        self.assertIn(
+            "if: (github.event_name == 'schedule' || "
+            "github.event_name == 'workflow_dispatch') && "
+            "github.ref == 'refs/heads/master'",
+            live,
+        )
+        self.assertEqual(live.count("ref: ${{ github.sha }}"), 1)
+        self.assertEqual(workflow.count("timeout-minutes:"), 2)
+
+
 if __name__ == "__main__":
     unittest.main()
