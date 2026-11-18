@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+      - name: Security workflow policy
+        run: python3 -m unittest scripts.test_security_workflow -v
       - run: node --check site-assets/site.js
       - run: python3 scripts/stage_review.py _review
       - name: Stage all domain previews from the reviewed source commit
