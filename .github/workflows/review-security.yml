@@ -9,6 +9,9 @@ on:
     - cron: '41 1 * * 2'
 permissions:
   contents: read
+concurrency:
+  group: professional-security-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   secrets:
     runs-on: ubuntu-latest
