@@ -8,9 +8,57 @@ import unittest
 
 CHECKOUT_SHA = "3d3c42e5aac5ba805825da76410c181273ba90b1"
 GITLEAKS_SHA = "e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e"
+UPLOAD_PAGES_SHA = "fc324d3547104276b827a68afc52ff2a11cc49c9"
+DEPLOY_PAGES_SHA = "368f82528645a54fb793d4d04e342629a3f51346"
 ROOT = Path(__file__).resolve().parents[1]
 SECURITY_WORKFLOW = ROOT / ".github/workflows/review-security.yml"
 PAGES_WORKFLOW = ROOT / ".github/workflows/review-pages.yml"
+EXPECTED_PAGES_WORKFLOW = f"""name: Secure site review and Pages
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: review-pages-${{{{ github.ref }}}}
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@{CHECKOUT_SHA} # v7
+        with:
+          persist-credentials: false
+      - name: Security workflow policy
+        run: python3 -m unittest scripts.test_security_workflow -v
+      - run: node --check site-assets/site.js
+      - run: python3 scripts/stage_review.py _review
+      - name: Stage all domain previews from the reviewed source commit
+        run: bash scripts/stage_domain_previews.sh _review/domain-previews
+      - run: python3 scripts/check_review.py _review
+      - uses: actions/upload-pages-artifact@{UPLOAD_PAGES_SHA} # v5
+        with:
+          path: _review
+  deploy:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{{{ steps.deployment.outputs.page_url }}}}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@{DEPLOY_PAGES_SHA} # v5
+"""
 
 
 class SecurityWorkflowTests(unittest.TestCase):
@@ -73,6 +121,12 @@ class SecurityWorkflowTests(unittest.TestCase):
             "name: Security workflow policy\n"
             "        run: python3 -m unittest scripts.test_security_workflow -v",
             validate,
+        )
+
+    def test_complete_pages_workflow_contract_is_exact(self) -> None:
+        self.assertEqual(
+            PAGES_WORKFLOW.read_bytes(),
+            EXPECTED_PAGES_WORKFLOW.encode("utf-8"),
         )
 
 
