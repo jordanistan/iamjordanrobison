@@ -23,6 +23,81 @@ from scripts.live_review import (
 )
 
 
+ROOT = Path(__file__).resolve().parents[1]
+LIVE_WORKFLOW = ROOT / ".github/workflows/live-review.yml"
+CHECKOUT_SHA = "3d3c42e5aac5ba805825da76410c181273ba90b1"
+EXPECTED_LIVE_WORKFLOW = f"""name: Professional site live integrity
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'index.html'
+      - 'Jordan_Robison_2026-Resume.pdf'
+      - 'site-assets/site.js'
+      - 'scripts/stage_review.py'
+      - 'scripts/stage_domain_previews.sh'
+      - 'scripts/check_review.py'
+      - 'scripts/live_review.py'
+      - 'scripts/test_live_review.py'
+      - '.github/workflows/live-review.yml'
+      - '.github/workflows/ethicalcheck.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'index.html'
+      - 'Jordan_Robison_2026-Resume.pdf'
+      - 'site-assets/site.js'
+      - 'scripts/stage_review.py'
+      - 'scripts/stage_domain_previews.sh'
+      - 'scripts/check_review.py'
+      - 'scripts/live_review.py'
+      - 'scripts/test_live_review.py'
+      - '.github/workflows/live-review.yml'
+      - '.github/workflows/ethicalcheck.yml'
+  schedule:
+    - cron: '23 13 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: professional-live-${{{{ github.ref }}}}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@{CHECKOUT_SHA} # v7
+        with:
+          persist-credentials: false
+      - name: Offline verifier tests
+        run: python3 -m unittest scripts.test_live_review -v
+      - name: Preserve the exact Pages artifact
+        run: |
+          node --check site-assets/site.js
+          python3 scripts/stage_review.py _review
+          bash scripts/stage_domain_previews.sh _review/domain-previews
+          python3 scripts/check_review.py _review
+
+  live:
+    if: (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@{CHECKOUT_SHA} # v7
+        with:
+          persist-credentials: false
+          ref: ${{{{ github.sha }}}}
+      - name: Verify public root and reviewed resume
+        run: python3 scripts/live_review.py
+"""
+
+
 def valid_html(extra: str = "") -> bytes:
     return f"""<!doctype html>
 <html lang="en"><head>
@@ -220,9 +295,14 @@ class ResumeTests(unittest.TestCase):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_complete_live_workflow_contract_is_exact(self) -> None:
+        self.assertEqual(
+            LIVE_WORKFLOW.read_bytes(),
+            EXPECTED_LIVE_WORKFLOW.encode("utf-8"),
+        )
+
     def test_live_workflow_is_bound_to_reviewed_source_and_trusted_master(self) -> None:
-        root = Path(__file__).resolve().parents[1]
-        workflow = (root / ".github/workflows/live-review.yml").read_text()
+        workflow = LIVE_WORKFLOW.read_text()
         for path in (
             "index.html",
             "Jordan_Robison_2026-Resume.pdf",
